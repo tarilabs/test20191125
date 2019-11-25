@@ -1,0 +1,35 @@
+<semantic:definitions name="MyDecision" id="def_12f8a48f-3978-0e29-4251-a66b6e6459bc" 
+             xmlns="http://sample.dmn" namespace="http://sample.dmn"
+             xmlns:feel="http://www.omg.org/spec/FEEL/20140401" exporter="ex" exporterVersion="12"
+             xmlns:semantic="http://www.omg.org/spec/DMN/20180521/MODEL/">
+  <semantic:itemDefinition name="MyItemDefinition" id="_850f24d9-57a3-131f-2194-ca15bb049a7a">
+    <semantic:itemComponent name="myNumber" id="_29d92e98-3c97-67a3-22f1-d342622424f7">
+      <semantic:typeRef>NumberDefinition</semantic:typeRef>
+    </semantic:itemComponent>
+  </semantic:itemDefinition>
+  <semantic:itemDefinition name="NumberDefinition" id="_e6972775-7973-b755-8714-9eff9d61e48e">
+    <semantic:typeRef>number</semantic:typeRef>
+  </semantic:itemDefinition>
+  <semantic:inputData name="MyInput" id="_d6395e05-d35c-d667-f227-398d93a97759">
+    <semantic:variable name="MyInput" id="_121ab3bc-b4e2-a6bb-51be-ef8fcc6623a6" typeRef="MyItemDefinition" />
+  </semantic:inputData>
+  <semantic:decision name="MyDecision" id="_12f8a48f-3978-0e29-4251-a66b6e6459bc">
+    <semantic:variable name="MyDecision" id="_098e9619-fa0c-3796-b3da-c4d018a79009" typeRef="boolean" />
+    <semantic:informationRequirement>
+      <semantic:requiredInput href="#_d6395e05-d35c-d667-f227-398d93a97759" />
+    </semantic:informationRequirement>
+    <semantic:context id="_6dcdac84-b03f-badd-a2d7-78c668ece883">
+      <semantic:contextEntry>
+        <semantic:variable name="containsMyNumber" id="_f6078cbe-54e6-d682-b3b7-8ffc638e4846" typeRef="boolean" />
+        <semantic:literalExpression id="_a022013e-4f0c-cfb3-1792-673a9e69be33">
+          <semantic:text>if list contains([0,1,2,3], MyInput.myNumber) then true else false</semantic:text>
+        </semantic:literalExpression>
+      </semantic:contextEntry>
+      <semantic:contextEntry>
+        <semantic:literalExpression id="_19c3853c-c63b-a8ac-0608-639ea685f321">
+          <semantic:text>containsMyNumber</semantic:text>
+        </semantic:literalExpression>
+      </semantic:contextEntry>
+    </semantic:context>
+  </semantic:decision>
+</semantic:definitions>
